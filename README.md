@@ -8,3 +8,4 @@
 
 # vphone-ios
 - https://github.com/34306/vphone-aio
+- https://github.com/Lakr233/vphone-cli
