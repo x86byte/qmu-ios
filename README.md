@@ -20,6 +20,9 @@ cd qmu-ios
 ./ios.sh normal
 ```
 
+
+<img width="1920" height="430" alt="image" src="https://github.com/user-attachments/assets/f767f416-5d6c-4dc6-b27b-85282c68fad8" />
+
 Wait 3-10 minutes for the kernel to boot and SSH to become available, then:
 
 ```bash
