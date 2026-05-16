@@ -90,6 +90,9 @@ The VM is still booting. Use the wait command instead of spamming SSH:
 
 This polls SSH every 5 seconds for up to 10 minutes and connects automatically when ready.
 
+<img width="1895" height="322" alt="image" src="https://github.com/user-attachments/assets/069da559-a3ca-4a7c-a4fe-fd164595d9e1" />
+
+
 ### Container stops immediately
 
 Check Docker logs:
