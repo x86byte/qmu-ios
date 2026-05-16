@@ -20,7 +20,6 @@ cd qmu-ios
 ./ios.sh normal
 ```
 
-
 <img width="1920" height="430" alt="image" src="https://github.com/user-attachments/assets/f767f416-5d6c-4dc6-b27b-85282c68fad8" />
 
 Wait 3-10 minutes for the kernel to boot and SSH to become available, then:
@@ -33,7 +32,6 @@ Password: `alpine`
 
 <img width="1896" height="954" alt="image" src="https://github.com/user-attachments/assets/b8388eb8-437d-4936-bddb-52ede493fe93" />
 
-
 ## Usage
 
 | Command | Description |
@@ -43,6 +41,7 @@ Password: `alpine`
 | `./ios.sh logs` | Follow boot logs |
 | `./ios.sh gdb` | Boot frozen, wait for GDB on port 1234 |
 | `./ios.sh shell` | Open a shell inside the container |
+| `./ios.sh wait` or `./ios.sh ssh` | Wait for SSH to become ready, then connect |
 
 ## What You Get
 
@@ -83,11 +82,13 @@ Use `./ios.sh logs` to watch progress. Look for:
 
 ### SSH: Connection closed / reset
 
-The VM is still booting. Wait longer and retry.
+The VM is still booting. Use the wait command instead of spamming SSH:
 
 ```bash
-watch -n 10 ssh -o ConnectTimeout=2 root@127.0.0.1 -p 2222
+./ios.sh wait
 ```
+
+This polls SSH every 5 seconds for up to 10 minutes and connects automatically when ready.
 
 ### Container stops immediately
 
