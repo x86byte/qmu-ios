@@ -31,6 +31,9 @@ ssh root@127.0.0.1 -p 2222
 
 Password: `alpine`
 
+<img width="1896" height="954" alt="image" src="https://github.com/user-attachments/assets/b8388eb8-437d-4936-bddb-52ede493fe93" />
+
+
 ## Usage
 
 | Command | Description |
