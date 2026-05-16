@@ -46,10 +46,26 @@ xnu-ramfb=off \
     echo "    Logs: docker logs -f $NAME"
 }
 
+wait_ssh() {
+    echo "[*] Waiting for SSH (this may take 3-10 min)..."
+    local i=0
+    while [ $i -lt 120 ]; do
+        if ssh -o StrictHostKeyChecking=no -o ConnectTimeout=2 -q root@127.0.0.1 -p 2222 exit 2>/dev/null; then
+            echo "[+] SSH ready!"
+            ssh -o StrictHostKeyChecking=no root@127.0.0.1 -p 2222
+            return
+        fi
+        sleep 5
+        i=$((i + 1))
+    done
+    echo "[-] SSH not available after 10 min. Check: docker logs $NAME"
+}
+
 case "${1:-normal}" in
     stop)   stop ;;
     shell)  docker exec -it "$NAME" /bin/bash 2>/dev/null || echo "Container not running" ;;
     gdb)    run "-s -S" ;;
     logs)   docker logs -f "$NAME" ;;
+    wait|ssh) wait_ssh ;;
     normal) run "" ;;
 esac
